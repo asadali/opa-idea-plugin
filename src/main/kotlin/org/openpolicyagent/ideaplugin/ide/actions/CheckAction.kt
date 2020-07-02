@@ -9,7 +9,6 @@ package org.openpolicyagent.ideaplugin.ide.actions
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareAction
 import org.openpolicyagent.ideaplugin.opa.tool.OpaActions
-import org.openpolicyagent.ideaplugin.openapiext.isOPAPluginApplicable
 
 
 class CheckAction : DumbAwareAction() {
@@ -20,9 +19,7 @@ class CheckAction : DumbAwareAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
         val (project, document) = getProjectAndDocument(e) ?: return
-        if (!document.isOPAPluginApplicable) {
-            return
-        }
-        OpaActions().checkDocument(project, document)
+        val editor = getEditor(e) ?: return
+        OpaActions().checkDocument(project, document, editor)
     }
 }

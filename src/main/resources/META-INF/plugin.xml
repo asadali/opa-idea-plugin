@@ -51,10 +51,6 @@
 
         <configurationType implementation="org.openpolicyagent.ideaplugin.ide.runconfig.OpaEvalRunConfigurationType"/>
         <configurationType implementation="org.openpolicyagent.ideaplugin.ide.runconfig.test.OpaTestRunConfigurationType"/>
-
-        <!-- TODOs -->
-        <todoIndexer filetype="Rego file" implementationClass="org.openpolicyagent.ideaplugin.ide.todo.RegoLexerBasedTodoIndexer"/>
-        <indexPatternBuilder implementation="org.openpolicyagent.ideaplugin.ide.todo.RegoTodoIndexPatternBuilder"/>
     </extensions>
 
     <actions>
@@ -73,7 +69,7 @@
                 text="Check with opa check"
                 description="Check current file with Opa Check"
                 icon="AllIcons.Actions.RealIntentionBulb">
-            <add-to-group group-id="CodeMenu" anchor="last"/>
+            <add-to-group group-id="CodeMenu" anchor="before" relative-to-action="org.openpolicyagent.ideaplugin.actions.FmtAction"/>
         </action>
 
         <action id="org.openpolicyagent.ideaplugin.actions.TestAction"
@@ -81,7 +77,7 @@
                 text="Test workspace with opa test"
                 description="Test workspace with opa test"
                 icon="AllIcons.Actions.RealIntentionBulb">
-            <add-to-group group-id="CodeMenu" anchor="last"/>
+            <add-to-group group-id="CodeMenu" anchor="before" relative-to-action="org.openpolicyagent.ideaplugin.actions.CheckAction"/>
         </action>
 
         <action id="org.openpolicyagent.ideaplugin.actions.TestCoverageAction"
@@ -89,7 +85,7 @@
                 text="View test coverage for workspace with opa test --coverage"
                 description="View test coverage for workspace with opa test --coverage"
                 icon="AllIcons.Actions.RealIntentionBulb">
-            <add-to-group group-id="CodeMenu" anchor="last"/>
+            <add-to-group group-id="CodeMenu" anchor="before" relative-to-action="org.openpolicyagent.ideaplugin.actions.TestAction"/>
         </action>
 
         <action id="org.openpolicyagent.ideaplugin.ide.actions.RegoCreateFileAction"
